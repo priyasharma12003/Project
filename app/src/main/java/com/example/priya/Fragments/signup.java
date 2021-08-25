@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -29,7 +30,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class signup extends Fragment {
-    EditText fname, lname, email, password1, cpass,date;
+    EditText fname, lname, email, password1, cpass;
+    TextView date;
     Button sign;
     UserDatabase mUserDatabase;
     ImageView camera;

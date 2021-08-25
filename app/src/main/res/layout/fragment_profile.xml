@@ -26,7 +26,8 @@
                 android:layout_height="wrap_content"
                 android:text="PROFILE"
                 android:layout_gravity="center"
-                android:fontFamily="sans-serif-condensed-medium"
+                android:fontFamily="serif-monospace"
+                android:textStyle="bold"
                 android:textColor="#FF6200EE"
                 android:textSize="40dp"/>
 

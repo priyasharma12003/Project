@@ -8,6 +8,13 @@
     tools:context=".Activity.MainActivity"
     android:background="@drawable/spashback">
 
+    <LinearLayout
+        android:id="@+id/Linear"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:orientation="horizontal">
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,6 +28,7 @@
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:text="Login"
+
             android:textSize="12dp"
             android:textStyle="bold"/>
 
@@ -51,16 +59,16 @@
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:text="Retrofit"
-            android:textSize="10dp"
+            android:textSize="9dp"
             android:textStyle="bold"/>
     </LinearLayout>
 
 
-    <LinearLayout
-        android:id="@+id/Linear"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-       android:orientation="horizontal">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/Linear"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--       android:orientation="horizontal">-->
 
 <!--        <androidx.cardview.widget.CardView-->
 <!--            android:layout_width="match_parent"-->
@@ -149,6 +157,6 @@
 <!--            </LinearLayout>-->
 
 <!--        </androidx.cardview.widget.CardView>-->
- </LinearLayout>
+<!-- </LinearLayout>-->
 
 </LinearLayout>

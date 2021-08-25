@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -18,16 +17,18 @@ import com.example.priya.Fragments.Profile;
 import com.example.priya.Fragments.UserList;
 import com.example.priya.Fragments.signup;
 import com.example.priya.R;
-import com.example.priya.RetrofitFragment;
+import com.example.priya.Retrofit.RetrofitFragment;
 
 public class MainActivity extends AppCompatActivity {
     Button login, signup, user, retrofit;
     LinearLayout layout;
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
+
+
+
 //        Retrofit fourth = new Retrofit();
 //        Fragment fragment = null;
 //        fragment = new Retrofit();
@@ -36,12 +37,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected( MenuItem item) {
 
+
+
+        switch (item.getItemId())
+{
+    case  R.id.Retrofit :
         Profile fourth = new Profile();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.Linear, fourth);
         transaction.commit();
+        break;
+    case R.id.Search:
+        UserList third = new UserList();
+        FragmentTransaction trans =getSupportFragmentManager().beginTransaction();
+        trans.replace(R.id.Linear, third);
+        trans.commit();
+        break;
+}
+
+
         return super.onOptionsItemSelected(item);
     }
 

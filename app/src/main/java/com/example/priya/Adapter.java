@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,11 +20,14 @@ import com.example.priya.Activity.update;
 import com.example.priya.Data.UserDatabase;
 import com.example.priya.Model.User;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class Adapter  extends RecyclerView.Adapter<Adapter.myviewHolder> {
+public class Adapter  extends RecyclerView.Adapter<Adapter.myviewHolder> implements Filterable {
 
     List<User> list;
+    List<User> backup;
     Context mContext;
     List<User>templist;
     UserDatabase mUserDatabase;
@@ -31,6 +36,7 @@ public class Adapter  extends RecyclerView.Adapter<Adapter.myviewHolder> {
     public Adapter(List<User> list,Context context) {
         this.list = list;
         this.mContext=context;
+      backup=new ArrayList<>(list);
 
         templist=list;
         mUserDatabase=UserDatabase.getUserDatabase(context);
@@ -60,6 +66,41 @@ public class Adapter  extends RecyclerView.Adapter<Adapter.myviewHolder> {
         return list.size();
     }
 
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    Filter filter=new Filter() {
+        @Override
+        //background thread
+        protected FilterResults performFiltering(CharSequence keyword) {
+            List<User> filterdata=new ArrayList<>();
+
+            if(keyword.toString().isEmpty())
+                filterdata.addAll(backup);
+            else{
+                for (User ob: backup)
+                    if(ob.getUsername().toString().toLowerCase().contains(keyword.toString().toLowerCase()))
+                        filterdata.add(ob);
+            }
+
+            FilterResults results=new FilterResults();
+            results.values=filterdata;
+            return results;
+
+        }
+
+        @Override
+        //ui thread
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+
+            list.clear();
+            list.addAll((Collection<? extends User>) results.values);
+            notifyDataSetChanged();
+
+        }
+    };
 
 
     class myviewHolder extends RecyclerView.ViewHolder{

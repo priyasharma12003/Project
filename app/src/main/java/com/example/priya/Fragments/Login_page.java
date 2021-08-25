@@ -18,14 +18,11 @@ import com.example.priya.Data.UserDatabase;
 import com.example.priya.Model.User;
 import com.example.priya.R;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Login_page extends Fragment {
     private EditText name;
     private EditText password;
    private Button login1;
-   List<User> list;
+//   List<User> list;
     UserDatabase mUserDatabase;
     String username, passwordtxt;
     SharedPreferences mSharedPreferences;
@@ -65,7 +62,7 @@ public class Login_page extends Fragment {
         mSharedPreferences= PreferenceManager.getDefaultSharedPreferences(getContext());
         mEditor=mSharedPreferences.edit();
 //       mUserDatabase= Room.databaseBuilder(getContext(),UserDatabase.class,"db_users").build();
-        list = new ArrayList<>();
+       // list = new ArrayList<>();
         name = view.findViewById(R.id.username);
         password = view.findViewById(R.id.pass);
         login1 = view.findViewById(R.id.login1);
@@ -78,6 +75,8 @@ public class Login_page extends Fragment {
                 passwordtxt = password.getText().toString();
 
                 if(username.isEmpty() && passwordtxt.isEmpty()) {
+                    name.setError("Required");
+                    password.setError("Required");
                     Toast.makeText(getContext(), "Fill All Field", Toast.LENGTH_LONG).show();
                 }
                 else {

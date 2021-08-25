@@ -1,4 +1,4 @@
-package com.example.priya;
+package com.example.priya.Retrofit;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.priya.Data.myapi;
 import com.example.priya.Model.model;
+import com.example.priya.R;
 
 import java.util.List;
 
@@ -61,7 +61,7 @@ public class RetrofitFragment extends Fragment {
                 adapter=new RetroAdapter(getContext(),data);
                 mRecyclerView.setAdapter(adapter);
 
-
+                   //for textview
 //                for(int i=0;i<data.size();i++)
 //                    tv.append("SL NO:"+data.get(i).getId()+"\n+ Title:"+data.get(i).getTitle()+"\n+ Body:"+data.get(i).getBody()+"\n\n\n");
             }

@@ -1,4 +1,4 @@
-package com.example.priya;
+package com.example.priya.Retrofit;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.priya.Model.model;
+import com.example.priya.R;
 
 import java.util.List;
 

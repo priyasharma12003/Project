@@ -1,4 +1,4 @@
-package com.example.priya.Data;
+package com.example.priya.Retrofit;
 
 import com.example.priya.Model.model;
 

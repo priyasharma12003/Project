@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Priya">
         <activity android:name=".Activity.update"></activity>
         <activity android:name=".Activity.MainActivity" />
-        <activity android:name=".Activity.Splash">
+        <activity android:name=".Activity.Splash" android:theme="@style/Theme.Priya2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
