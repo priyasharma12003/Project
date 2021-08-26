@@ -4,30 +4,28 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.priya.DataBinding;
 import com.example.priya.Fragments.Login_page;
 import com.example.priya.Fragments.Profile;
 import com.example.priya.Fragments.UserList;
 import com.example.priya.Fragments.signup;
 import com.example.priya.R;
 import com.example.priya.Retrofit.RetrofitFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    Button login, signup, user, retrofit;
+   // Button login, signup, user, retrofit,databinding;
     LinearLayout layout;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
-
-
 
 //        Retrofit fourth = new Retrofit();
 //        Fragment fragment = null;
@@ -36,12 +34,19 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected( MenuItem item) {
 
 
+        Profile fourth = new Profile();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.Linear, fourth);
+        transaction.commit();
 
-        switch (item.getItemId())
+        //for multiple menues
+       /* switch (item.getItemId())
 {
     case  R.id.Retrofit :
         Profile fourth = new Profile();
@@ -55,22 +60,62 @@ public class MainActivity extends AppCompatActivity {
         trans.replace(R.id.Linear, third);
         trans.commit();
         break;
-}
 
 
+}*/
         return super.onOptionsItemSelected(item);
     }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+         //with bottom navigation
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom);
+        bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
 
-        login = findViewById(R.id.button);
+        Login_page first = new Login_page();
+        Fragment fragment = null;
+        fragment = new Login_page();
+        getSupportFragmentManager().beginTransaction().replace(R.id.Linear, fragment).commit();
+    }
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener=new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(MenuItem item) {
+            Fragment selectedFragment = null;
+            switch (item.getItemId()) {
+                case R.id.nlogin:
+                    selectedFragment = new Login_page();
+                    break;
+                case R.id.msignup:
+                    selectedFragment = new signup();
+                    break;
+                case R.id.muserlist:
+                    selectedFragment = new UserList();
+                    break;
+                case R.id.mretrofit:
+                    selectedFragment = new RetrofitFragment();
+                    break;
+                case R.id.mdatabinding:
+                    selectedFragment = new DataBinding();
+                    break;
+            }
+            getSupportFragmentManager().beginTransaction().replace(R.id.Linear, selectedFragment).commit();
+            return  true;
+
+        }
+    };
+}
+
+          //with buttons
+        /*login = findViewById(R.id.button);
         signup = findViewById(R.id.button2);
         user = findViewById(R.id.button3);
         layout = findViewById(R.id.Linear);
         retrofit = findViewById(R.id.button4);
+        databinding=findViewById(R.id.button5);
 
         Login_page first = new Login_page();
         Fragment fragment = null;
@@ -87,9 +132,7 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new Login_page();
                 getSupportFragmentManager().beginTransaction().replace(R.id.Linear, fragment).commit();
 
-               /* FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.Linear,first);
-                transaction.commit();*/
+
             }
         });
 
@@ -124,6 +167,18 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.Linear, fragment).commit();
             }
         });
+
+        databinding.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               DataBinding fifth = new DataBinding();
+                Fragment fragment = null;
+                fragment = new DataBinding();
+                getSupportFragmentManager().beginTransaction().replace(R.id.Linear, fragment).commit();
+            }
+        });
+        */
+
 //        sign.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -168,5 +223,6 @@ public class MainActivity extends AppCompatActivity {
 //
 //        }
 //    }
-    }
-}
+
+
+
