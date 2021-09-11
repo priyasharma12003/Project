@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.Login_page">
+    tools:context=".fragments.Login">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -33,7 +33,7 @@
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_baseline_lock_24" />
+                    android:src="@drawable/ic_round_person_24" />
 
 
                 <EditText
@@ -42,9 +42,9 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/edt"
+                    android:background="@drawable/textcolor"
                     android:paddingLeft="15dp"
-                    android:hint="User Name"
+                    android:hint="@string/user_name"
                     android:drawableLeft="@drawable/ic_baseline_person_24"
                     android:drawablePadding="20dp"/>
 
@@ -55,21 +55,28 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/edt"
+                    android:background="@drawable/textcolor"
                     android:paddingLeft="15dp"
-                    android:hint="Password"
+                    android:hint="@string/password"
                     android:inputType="textPassword"
                     android:drawableLeft="@drawable/ic_baseline_lock_24"
                     android:drawablePadding="20dp"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Forgot Password?"
+                    android:id="@+id/fpass"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="220dp"/>
 
                 <Button
                     android:id="@+id/login1"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:text="Login" />
+                    android:text="@string/login" />
 
 
 

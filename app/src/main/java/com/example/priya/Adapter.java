@@ -2,6 +2,7 @@ package com.example.priya;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
@@ -16,42 +17,46 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.priya.Activity.update;
-import com.example.priya.Data.UserDatabase;
-import com.example.priya.Model.User;
+import com.example.priya.activity.Update;
+import com.example.priya.data.UserDatabase;
+import com.example.priya.fragments.Information;
+import com.example.priya.model.User;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class Adapter  extends RecyclerView.Adapter<Adapter.myviewHolder> implements Filterable {
+public class Adapter extends RecyclerView.Adapter<Adapter.myviewHolder> implements Filterable {
 
     List<User> list;
     List<User> backup;
     Context mContext;
-    List<User>templist;
+    List<User> templist;
     UserDatabase mUserDatabase;
     int idx;
+    SharedPreferences mSharedPreferences;
+    SharedPreferences.Editor mEditor;
 
-    public Adapter(List<User> list,Context context) {
+    public Adapter(List<User> list, Context context) {
         this.list = list;
-        this.mContext=context;
-      backup=new ArrayList<>(list);
+        this.mContext = context;
+        backup = new ArrayList<>(list);
 
-        templist=list;
-        mUserDatabase=UserDatabase.getUserDatabase(context);
+        templist = list;
+        mUserDatabase = UserDatabase.getUserDatabase(context);
 
     }
+
     @Override
     public myviewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(mContext).inflate(R.layout.list_item,parent,false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.list_item, parent, false);
 
         return new myviewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(Adapter.myviewHolder holder, int position) {
-        User user=list.get(position);
+        User user = list.get(position);
 
         holder.name.setText(user.getUsername());
         holder.email.setText(user.getEmail());
@@ -71,22 +76,22 @@ public class Adapter  extends RecyclerView.Adapter<Adapter.myviewHolder> impleme
         return filter;
     }
 
-    Filter filter=new Filter() {
+    Filter filter = new Filter() {
         @Override
         //background thread
         protected FilterResults performFiltering(CharSequence keyword) {
-            List<User> filterdata=new ArrayList<>();
+            List<User> filterdata = new ArrayList<>();
 
-            if(keyword.toString().isEmpty())
+            if (keyword.toString().isEmpty())
                 filterdata.addAll(backup);
-            else{
-                for (User ob: backup)
-                    if(ob.getUsername().toString().toLowerCase().contains(keyword.toString().toLowerCase()))
+            else {
+                for (User ob : backup)
+                    if (ob.getUsername().toString().toLowerCase().contains(keyword.toString().toLowerCase()))
                         filterdata.add(ob);
             }
 
-            FilterResults results=new FilterResults();
-            results.values=filterdata;
+            FilterResults results = new FilterResults();
+            results.values = filterdata;
             return results;
 
         }
@@ -103,59 +108,99 @@ public class Adapter  extends RecyclerView.Adapter<Adapter.myviewHolder> impleme
     };
 
 
-    class myviewHolder extends RecyclerView.ViewHolder{
-        TextView name,email,pass;
+    class myviewHolder extends RecyclerView.ViewHolder {
+        TextView name, email, pass;
         Button edit;
-                ImageView delete;
-                ImageView camera;
+        ImageView delete;
+        ImageView camera;
 
 
-        public myviewHolder( View itemView) {
+        public myviewHolder(View itemView) {
 
             super(itemView);
 
-            name=itemView.findViewById(R.id.name);
-            email=itemView.findViewById(R.id.mail);
-            pass=itemView.findViewById(R.id.passwprd1);
-            edit=itemView.findViewById(R.id.edit);
-            delete=itemView.findViewById(R.id.image_delete);
-            camera=itemView.findViewById(R.id.imageView);
+            name = itemView.findViewById(R.id.name);
+            email = itemView.findViewById(R.id.mail);
+            pass = itemView.findViewById(R.id.passwprd1);
+            edit = itemView.findViewById(R.id.edit);
+            delete = itemView.findViewById(R.id.image_delete);
+            camera = itemView.findViewById(R.id.imageView);
 
 
 
             edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                     User usertemp=  list.get(getAdapterPosition());
+                    User usertemp = list.get(getAdapterPosition());
 
-                   int no= usertemp.getId();
+                    int no = usertemp.getId();
+//                    mSharedPreferences= PreferenceManager.getDefaultSharedPreferences(mContext);
+//                   int idno= mSharedPreferences.getInt("id",no);
+//                    mEditor=mSharedPreferences.edit();
+//                    if(idno!=no){
+//                        edit.setVisibility(View.GONE);
+//                    }
 
-                    Intent i = new Intent(v.getContext(), update.class);
-                    i.putExtra("id",no);
-                   v.getContext().startActivity(i);
-
+                        Intent i = new Intent(v.getContext(), Update.class);
+                        i.putExtra("id", no);
+                        v.getContext().startActivity(i);
                 }
+            });
+
+
+            //on click of item in userlist.
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int i = getAdapterPosition();
+                    User ob = list.get(i);
+                    Information info = new Information(mContext, ob.getUsername(), ob.getEmail(), ob.getPassword(), ob.getDob(), ob.getId(), ob.getBitmap());
+                    info.show();
+                }
+
             });
 
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                   User user=templist.get(getAdapterPosition());
-                   idx=user.getId();
-                   new Thread(new Runnable() {
-                       @Override
-                       public void run() {
+                    User user = templist.get(getAdapterPosition());
+                    idx = user.getId();
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
 
-                           User userob=mUserDatabase.getuserDao().getId(idx);
-                           mUserDatabase.getuserDao().deleteuser(userob);
+                            User userob = mUserDatabase.getuserDao().getId(idx);
+                            mUserDatabase.getuserDao().deleteuser(userob);
 
-                           new Handler(Looper.getMainLooper()).post(new Runnable() {
-                               @Override
-                               public void run() {
-                                   Toast.makeText(mContext,"User Deleted Successfully",Toast.LENGTH_LONG).show();
+                            new Handler(Looper.getMainLooper()).post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(mContext, "User Deleted Successfully", Toast.LENGTH_LONG).show();
 
-                               }
-                           });
+                                }
+                            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -178,8 +223,9 @@ public class Adapter  extends RecyclerView.Adapter<Adapter.myviewHolder> impleme
                                    });
                                }
                            }
-                      */ }
-                   }).start();
+                      */
+                        }
+                    }).start();
                 }
             });
 

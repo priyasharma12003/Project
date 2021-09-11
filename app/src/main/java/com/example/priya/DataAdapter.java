@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.priya.databinding.DataItemBinding;
+import com.example.priya.databinding.DataItemsBinding;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class DataAdapter extends RecyclerView.Adapter <DataAdapter.viewholder>
     @Override
     public viewholder onCreateViewHolder( ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater=LayoutInflater.from(mContext);
-       DataItemBinding dataItemBinding=DataItemBinding.inflate(layoutInflater,parent,false);
+       DataItemsBinding dataItemBinding=DataItemsBinding.inflate(layoutInflater,parent,false);
        return new viewholder(dataItemBinding);
 
 
@@ -42,9 +42,9 @@ public class DataAdapter extends RecyclerView.Adapter <DataAdapter.viewholder>
     }
 
     class viewholder extends RecyclerView.ViewHolder{
-        DataItemBinding mDataItemBinding;
+        DataItemsBinding mDataItemBinding;
 
-        public viewholder(DataItemBinding dataItemBinding) {
+        public viewholder(DataItemsBinding dataItemBinding) {
             super(dataItemBinding.getRoot());
             this.mDataItemBinding=dataItemBinding;
 

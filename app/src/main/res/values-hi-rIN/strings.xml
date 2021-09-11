@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_name">उपयोगकर्ता नाम</string>
+    <string name="password">पासवर्ड</string>
+    <string name="login">लॉग इन करें</string>
+    <string name="app_name">Priya</string>
+    <string name="sign_up">साइन अप करें</string>
+    <string name="date_of_birth">जन्म की तारीख</string>
+    <string name="email">ईमेल</string>
+    <string name="last_name">सरनेम</string>
+    <string name="confirm_pasword">पासवर्ड की पुष्टि कीजिये</string>
+</resources>

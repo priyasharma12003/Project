@@ -62,7 +62,7 @@ public class DataUser {
                     '}';
         }
 
-       @BindingAdapter("android:imageloader")
+       @BindingAdapter("imageloader")
         public static void imageload(ImageView imageView,String imageUrl){
            Glide.with(imageView)
                    .load(imageUrl)

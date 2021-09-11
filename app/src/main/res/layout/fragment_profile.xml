@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragments.Profile"
+    tools:context=".fragments.Profile"
     android:background="@drawable/spashback">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -26,7 +26,6 @@
                 android:layout_height="wrap_content"
                 android:text="PROFILE"
                 android:layout_gravity="center"
-                android:fontFamily="serif-monospace"
                 android:textStyle="bold"
                 android:textColor="#FF6200EE"
                 android:textSize="40dp"/>
@@ -34,39 +33,37 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/ic_baseline_person_24"
+                tools:srcCompat="@tools:sample/avatars"
                 android:id="@+id/Profile_image"
                 android:layout_gravity="center"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="NAME"
-                android:hint="Username"
+                android:text="@string/user_name"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:padding="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:id="@+id/Profile_name"
-                android:background="@drawable/edt"/>
+                android:background="@drawable/textcolor"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="EMAIL"
-                android:hint="Email"
+                android:text="@string/email"
                 android:textSize="20dp"
                 android:padding="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:id="@+id/Profile_Email"
-                android:background="@drawable/edt"/>
+                android:background="@drawable/textcolor"/>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Logout"
+                android:text="@string/logout"
                 android:textSize="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"

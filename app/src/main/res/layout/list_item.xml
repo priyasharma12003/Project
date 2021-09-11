@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+<!--<androidx.cardview.widget.CardView-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_marginBottom="4dp"-->
+<!--    app:cardCornerRadius="20dp">-->
+
+
+<RelativeLayout android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="4dp"
-    app:cardCornerRadius="20dp">
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/spashback">
+    android:layout_margin="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="50dp"
@@ -24,8 +23,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
             android:layout_toEndOf="@+id/imageView"
-            android:text="Username"
+            android:text="@string/user_name"
             android:textColor="@android:color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -33,35 +33,38 @@
             android:id="@+id/mail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_below="@+id/name"
             android:layout_marginStart="8dp"
             android:layout_toEndOf="@+id/imageView"
-            android:text="Email"
+            android:text="@string/email"
+            android:fontFamily="sans-serif-condensed"
             android:textSize="15sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/passwprd1"
+            android:layout_marginLeft="10dp"
             android:layout_below="@+id/mail"
             android:layout_marginStart="8dp"
             android:layout_toEndOf="@+id/imageView"
-            android:text="password"/>
+            android:text="@string/password"/>
         <ImageView
             android:id="@+id/image_delete"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentTop="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
             android:layout_alignParentEnd="true"
             android:src="@drawable/ic_baseline_delete_24"/>
 
         <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="69dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
             android:background="@drawable/ic_baseline_edit_24"
             android:id="@+id/edit"/>
     </RelativeLayout>
-</androidx.cardview.widget.CardView>
+<!--</androidx.cardview.widget.CardView>-->

@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.signup">
+    tools:context=".fragments.Signup">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:background="@drawable/spashback"
-        tools:context=".Fragments.signup">
+        tools:context=".fragments.Signup">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -26,28 +26,33 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/spashback"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_baseline_lock_24" />
-
+                android:orientation="vertical"
+                android:background="@drawable/spashback">
+<!--<com.google.android.material.textfield.TextInputLayout-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    app:counterMaxLength="10"-->
+<!--    app:counterEnabled="true"-->
+<!--    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--    app:helperText="*Required"-->
+<!--    app:endIconMode="clear_text"-->
+<!--    app:helperTextTextColor="@color/red"-->
+<!--    android:layout_marginTop="10dp">-->
 
                 <EditText
                     android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/edt"
                     android:hint="User Name"
+                    android:maxLength="10"
                     android:paddingLeft="15dp"
                     android:drawablePadding="20dp"
+                    android:background="@drawable/textcolor"
                     android:drawableLeft="@drawable/ic_baseline_person_24"/>
-
+<!--</com.google.android.material.textfield.TextInputLayout>-->
                 <EditText
                     android:id="@+id/last"
                     android:layout_width="match_parent"
@@ -55,8 +60,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/edt"
-                    android:hint="Last Name"
+                    android:background="@drawable/textcolor"
+                    android:hint="@string/last_name"
                     android:paddingLeft="15dp"
                     android:drawablePadding="20dp"
                     android:drawableLeft="@drawable/ic_baseline_person_24"/>
@@ -68,8 +73,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/edt"
-                    android:hint="Email"
+                    android:background="@drawable/textcolor"
+                    android:hint="@string/email"
                     android:paddingLeft="15dp"
                     android:drawablePadding="20dp"
                     android:drawableLeft="@drawable/ic_baseline_email_24"/>
@@ -81,8 +86,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/edt"
-                    android:hint="Password"
+                    android:background="@drawable/textcolor"
+                    android:hint="@string/password"
                     android:paddingLeft="15dp"
                     android:drawablePadding="20dp"
                     android:inputType="textPassword"
@@ -95,30 +100,29 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/edt"
-                    android:hint="Confirm Pasword"
+                    android:background="@drawable/textcolor"
+                    android:hint="@string/confirm_pasword"
                     android:paddingLeft="15dp"
                     android:drawablePadding="20dp"
                     android:inputType="textPassword"
                     android:drawableLeft="@drawable/ic_baseline_lock_24"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+
 
                     <TextView
                         android:id="@+id/dp"
-                        android:layout_width="210dp"
+                        android:layout_width="match_parent"
                         android:layout_height="52dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/edt"
+                        android:background="@drawable/textcolor"
+                        android:layout_marginRight="20dp"
                         android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
                         android:drawablePadding="20dp"
+                        android:paddingTop="10dp"
                         android:paddingLeft="15dp"
-                        android:text="Date Of Birth"
-                        android:textSize="20dp" />
+                        android:text="@string/date_of_birth"
+                        android:textSize="17dp"/>
                     <!--                <EditText-->
                     <!--                    android:layout_width="200dp"-->
                     <!--                    android:layout_height="40dp"-->
@@ -128,15 +132,44 @@
                     <!--                    android:layout_marginTop="10dp"-->
                     <!--                    android:layout_marginLeft="20dp"-->
                     <!--                    android:paddingLeft="15dp"-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/textcolor"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Select Image"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"/>
 
                     <ImageView
                         android:id="@+id/camera"
-                        android:layout_width="54dp"
-                        android:layout_height="54dp"
-                        android:layout_marginLeft="50dp"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/ic_baseline_camera_alt_24" />
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_baseline_image_24"
+                        android:layout_marginLeft="20dp"/>
+                    <ImageView
+                        android:id="@+id/browse"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_baseline_camera_alt_24"
+                        android:layout_marginLeft="30dp"/>
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/show"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="40dp"/>
                 </LinearLayout>
 
                 <Button
@@ -144,8 +177,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="4dp"
-                    android:text="Sign Up" />
+                    android:text="@string/sign_up" />
 
             </LinearLayout>
 

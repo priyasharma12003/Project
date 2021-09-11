@@ -3,7 +3,7 @@ package com.example.priya;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.priya.Model.User;
+import com.example.priya.model.User;
 
 public class SessionManagement {
     SharedPreferences mSharedPreference;

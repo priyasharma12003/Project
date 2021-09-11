@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.update">
+    tools:context=".activity.Update">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -40,8 +40,8 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/edt"
-                    android:hint="User Name"
+                    android:background="@drawable/textcolor"
+                    android:hint="@string/user_name"
                     android:paddingLeft="15dp" />
 
                 <EditText
@@ -51,9 +51,9 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/edt"
-                    android:hint="Last Name"
-                    android:paddingLeft="15dp" />
+                    android:background="@drawable/textcolor"
+                    android:hint="@string/last_name"
+                    android:paddingLeft="15dp"/>
 
                 <EditText
                     android:id="@+id/update_mail"
@@ -62,8 +62,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/edt"
-                    android:hint="Email"
+                    android:background="@drawable/textcolor"
+                    android:hint="@string/email"
                     android:paddingLeft="15dp" />
 
                 <EditText
@@ -73,8 +73,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/edt"
-                    android:hint="Password"
+                    android:background="@drawable/textcolor"
+                    android:hint="@string/password"
                     android:paddingLeft="15dp" />
 
                 <Button
@@ -86,7 +86,7 @@
                     android:height="50dp"
                     android:id="@+id/update_btn"
                     android:paddingLeft="15dp"
-                    android:text="Save" />
+                    android:text="@string/save" />
 
 
             </LinearLayout>

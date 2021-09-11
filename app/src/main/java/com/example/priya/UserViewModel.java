@@ -5,8 +5,8 @@ import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.priya.Data.UserDatabase;
-import com.example.priya.Model.User;
+import com.example.priya.data.UserDatabase;
+import com.example.priya.model.User;
 
 import java.util.List;
 
